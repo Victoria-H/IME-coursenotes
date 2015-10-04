@@ -1,0 +1,51 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Le codage des textes - premi&egrave;re approche</title><link rel="stylesheet" type="text/css" href="html.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="&Eacute;l&eacute;ments d'informatique"><link rel="up" href="codage.html" title="Chapitre&nbsp;2.&nbsp;Le codage de l'information"><link rel="prev" href="code-negatifs.html" title="2.&nbsp;Coder les entiers relatifs"><link rel="next" href="echantillonnage.html" title="4.&nbsp;&Eacute;chantillonnage : exemple des sons"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Le codage des textes - premi&egrave;re approche</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="code-negatifs.html">Pr&eacute;c&eacute;dent</a>&nbsp;</td><th width="60%" align="center">Chapitre&nbsp;2.&nbsp;Le codage de l'information</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="echantillonnage.html">Suivant</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="code-textes"></a>3.&nbsp;Le codage des textes - premi&egrave;re approche</h2></div></div></div><p>Les caract&egrave;res, comme tout le reste, doivent &ecirc;tre transform&eacute;s en s&eacute;ries de bits. Il y a fort longtemps... le codage des caract&egrave;res se faisait uniquement sur 7&nbsp;bit et seulement en caract&egrave;res latins de base. Le code le plus courant sur les PC, et qui finit par s'imposer, fut le code ASCII, mais il y en avait de nombreux autres, concurrents. Autrement dit une m&ecirc;me s&eacute;rie de bits correspondait &agrave; des caract&egrave;res diff&eacute;rents pour des codages diff&eacute;rents.</p><pre class="programlisting"> Symb.  D&eacute;c.  Hex.   URI
+espace=  32 - 0x20 - %20
+    ! =  33 - 0x21 - %21
+    " =  34 - 0x22 - %22
+    # =  35 - 0x23 - %23
+    $ =  36 - 0x24 - %24
+    % =  37 - 0x25 - %25
+    &amp; =  38 - 0x26 - %26
+    ' =  39 - 0x27 - %27
+    ( =  40 - 0x28 - %28
+    ) =  41 - 0x29 - %29
+    * =  42 - 0x2A - %2A
+    + =  43 - 0x2B - %2B
+    , =  44 - 0x2C - %2C
+    - =  45 - 0x2D - %2D
+    . =  46 - 0x2E - %2E
+    / =  47 - 0x2F - %2F
+    0 =  48 - 0x30 - %30
+    1 =  49 - 0x31 - %31
+    2 =  50 - 0x32 - %32
+   ...
+    9 =  57 - 0x39 - %39
+    : =  58 - 0x3A - %3A
+    ; =  59 - 0x3B - %3B
+    &lt; =  60 - 0x3C - %3C
+    = =  61 - 0x3D - %3D
+    &gt; =  62 - 0x3E - %3E
+    ? =  63 - 0x3F - %3F
+    @ =  64 - 0x40 - %40
+    A =  65 - 0x41 - %41
+    B =  66 - 0x42 - %42
+    C =  67 - 0x43 - %43
+   ...
+    Z =  90 - 0x5A - %5A
+    [ =  91 - 0x5B - %5B
+    \ =  92 - 0x5C - %5C
+    ] =  93 - 0x5D - %5D
+    ^ =  94 - 0x5E - %5E
+    _ =  95 - 0x5F - %5F
+    ` =  96 - 0x60 - %60
+    a =  97 - 0x61 - %61
+    b =  98 - 0x62 - %62
+    c =  99 - 0x63 - %63
+   ...
+    z = 122 - 0x7A - %7A
+    { = 123 - 0x7B - %7B
+    | = 124 - 0x7C - %7C
+    } = 125 - 0x7D - %7D
+    ~ = 126 - 0x7E - %7E</pre><p>Avec l'extension de l'utilisation des ordinateurs sur toute la plan&egrave;te, et l'am&eacute;lioration de la technique, on coda les caract&egrave;res sur un octet, ce qui permet, th&eacute;oriquement pr&egrave;s de 256 caract&egrave;res diff&eacute;rents. Ceci ne permit pas encore d'avoir dans le m&ecirc;me codage les caract&egrave;res accentu&eacute;s Ouest-europ&eacute;ens et les caract&egrave;res grecs, par exemple. Pour &eacute;crire le Fran&ccedil;ais, on utilisait souvent trois codages diff&eacute;rents&nbsp;: le codage ISO-latin-1 (ou ISO-8859-1, standard), un codage proche sp&eacute;cifique &agrave; Windows (Windows-1252) et un autre sp&eacute;cifique &agrave; MacOS (MacRoman).</p><p>Ce principe n'&eacute;tait vraiment pas pratique&nbsp;: les documents ou m&eacute;moires de masse dans tel ou tel codage n'&eacute;taient pas forc&eacute;ment lisibles sur tel autre ordinateur. Certains caract&egrave;res &eacute;taient tout simplement rendus incorrectement. Autre difficult&eacute;&nbsp;: quand l'euro a &eacute;t&eacute; introduit, il a fallu revoir les encodage... qui ne disposaient toujours pas tous du "o e dans l'o" (&#339;). La difficult&eacute; fut contourn&eacute;e en s'autorisant &agrave; coder les caract&egrave;res sur plusieurs octets avec Unicode. Unicode, r&eacute;guli&egrave;rement r&eacute;vis&eacute;, norme ISO 10646, a vocation &agrave; comprendre tous les jeux de caract&egrave;res existant ou ayant exist&eacute;. Unicode correspond, en pratique, &agrave; plusieurs codages, dont le plus usuel est UTF-8. C'est aujourd'hui le code &agrave; utiliser&nbsp;; les autres doivent &ecirc;tre consid&eacute;r&eacute;s comme obsol&egrave;tes. Le code UTF-8 reprend le code ASCII pour les caract&egrave;res ci-dessus&nbsp;; les autres caract&egrave;res &eacute;tant cod&eacute;s sur plusieurs octets.</p><p>Nous verrons plus tard que les standards HTML et XML ont utilis&eacute; une autre approche du codage des caract&egrave;res.</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="code-negatifs.html">Pr&eacute;c&eacute;dent</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="codage.html">Niveau sup&eacute;rieur</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="echantillonnage.html">Suivant</a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Coder les entiers relatifs&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Sommaire</a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;&Eacute;chantillonnage : exemple des sons</td></tr></table></div></body></html>
